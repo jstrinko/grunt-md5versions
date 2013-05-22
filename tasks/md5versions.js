@@ -51,9 +51,12 @@ module.exports = function(grunt) {
 			md5.update(src);
 			var digest = md5.digest('hex');
 			console.warn(versions[options.key] + " VS " + digest);
-			if (versions[options.key] !== digest) {
+			if (!versions[options.key]) { 
+				versions[options.key] = {};
+			}
+			if (versions[options.key][options.type] !== digest) {
 				// Write the destination file.
-				versions[options.key] = digest;
+				versions[options.key][options.type] = digest;
 				grunt.file.write(f.dest, JSON.stringify(versions));
 				grunt.log.writeln("Digest updated for " + options.key + " to " + digest);
 			}

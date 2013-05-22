@@ -1,7 +1,7 @@
 {
   "name": "grunt-md5versions",
   "description": "Track asset versions based on the md5 of the assets.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/jstrinko/grunt-md5versions",
   "author": {
     "name": "Jeff Strinko",

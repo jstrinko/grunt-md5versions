@@ -32,7 +32,8 @@ module.exports = function(grunt) {
     md5versions: {
       default_options: {
         options: {
-					key: 'test'
+					key: 'test',
+					type: 'scripts'
         },
         files: {
           '/tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123'],
@@ -43,7 +44,8 @@ module.exports = function(grunt) {
           separator: ': ',
           punctuation: ' !!!',
 					versions_file: '/tmp/versions-custom.json',
-					key: 'test-custom'
+					key: 'test-custom',
+					type: 'scripts'
         },
         files: {
           '/tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123'],
