@@ -50,7 +50,7 @@ module.exports = function(grunt) {
 			var md5 = Crypto.createHash('md5');
 			md5.update(src);
 			var digest = md5.digest('hex');
-			console.warn(versions[options.key] + " VS " + digest);
+			console.warn(versions[options.key][options.type] + " VS " + digest);
 			if (!versions[options.key]) { 
 				versions[options.key] = {};
 			}
@@ -59,6 +59,15 @@ module.exports = function(grunt) {
 				versions[options.key][options.type] = digest;
 				grunt.file.write(f.dest, JSON.stringify(versions));
 				grunt.log.writeln("Digest updated for " + options.key + " to " + digest);
+				if (typeof options.on_change == 'function') {
+					try {
+						var on_change = _.bind(options.on_change,this);
+						on_change()
+					}
+					catch(error) {
+						grunt.error("Unable to run on_change function for " + this.target + ": " + error);
+					}
+				}
 			}
     }, this));
   });
