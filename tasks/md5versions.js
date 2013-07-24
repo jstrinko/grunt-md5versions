@@ -50,7 +50,6 @@ module.exports = function(grunt) {
 			var md5 = Crypto.createHash('md5');
 			md5.update(src);
 			var digest = md5.digest('hex');
-			console.warn(versions[options.key][options.type] + " VS " + digest);
 			if (!versions[options.key]) { 
 				versions[options.key] = {};
 			}
